@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Adopt a Pet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo flex">
+            <img src="images/logo.jpg" class="h-[48px] px-[1rem]">
+            <h1 >PetPals - Rehoming</h1>
+
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#pets-display">Adopt</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="add-pet.html">Add Pet</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="hero" class="parallax">
+        <div class="content">
+            <h2>Find Your New Best Friend!</h2>
+            
+            <button onclick="scrollToSection('browse-pets')">Browse Pets</button>
+        </div>
+    </section>
+
+    <section id="pets-display">
+        <div class="section-wrapper">
+            <div class="center-container">
+                <div class="child-element">
+                    <section id="featured">
+                        <h3>Featured Pets</h3>
+                        <div class="featured-pets-carousel">
+                            <div class="carousel-container">
+                                
+                            </div>
+                        </div>
+                        <button onclick="scrollToSection('browse-pets')">See All Pets</button>
+                    </section>
+                </div>
+            </div>
+        </div>
+            
+        <div class="section-wrapper">
+            <div class="center-container">
+                <div class="child-element">
+                    <section id="browse-pets">
+                        <h3>Browse Our Adorable Pets</h3>
+                        <div class="filter-options">
+                            <select id="animal-type" onchange="filterPets()">
+                                <option value="">All Animals</option>
+                                <option value="dog">Dogs</option>
+                                <option value="cat">Cats</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </section>
+                    <hr id="browse-pets-separator">
+                    <div id="pets-list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <section id="donate">
+        <div class="section-wrapper">
+            <h3>Make a difference today</h3>
+            <p class="quote">"Your generosity can change a pet's life forever. Every donation counts!"</p>
+            <div class="donate-options">
+                <div class="donate-option">
+                    <h4>₹500</h4>
+                    <button class="cta-button" onclick="donate(500)">Donate ₹500</button>
+                </div>
+                <div class="donate-option">
+                    <h4>₹1000</h4>
+                    <button class="cta-button" onclick="donate(1000)">Donate ₹1000</button>
+                </div>
+                <div class="donate-option">
+                    <h4>₹5000</h4>
+                    <button class="cta-button" onclick="donate(5000)">Donate ₹5000</button>
+                </div>
+            </div>
+            <div class="custom-amount">
+                <h4>Custom Amount</h4>
+                <input type="number" id="custom-amount" placeholder="Enter amount in INR">
+                <button class="cta-button" onclick="donateCustom()">Donate Custom Amount</button>
+            </div>
+            <div class="impact-stats">
+                <div class="stat">
+                    <h4>1000+</h4>
+                    <p>Pets Rescued</p>
+                </div>
+                <div class="stat">
+                    <h4>50+</h4>
+                    <p>Shelters Supported</p>
+                </div>
+                <div class="stat">
+                    <h4>5000+</h4>
+                    <p>Happy Adoptions</p>
+                </div>
+            </div>
+            <button class="cta-button">Support Now</button>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h3>100s of Happy Stories</h3>
+        <div class="testimonial-container">
+            <div class="testimonial-gallery">
+                <div class="testimonial-card">
+                    <img src="data:image/jpeg;base64,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" alt="Happy Pet 1">
+                    <p>"We adopted Max, and he's brought so much joy to our family!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/luna.png" alt="Happy Pet 2">
+                    <p>"Luna has been the perfect addition to our home. Thank you!"</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://blog.thefabulous.co/wp-content/uploads/2018/10/eric-ward-610868-unsplash-1-1060x708.jpg" alt="Happy Pet 3">
+                    <p>"Adopting Buddy was the best decision we've ever made."</p>
+                </div>
+                <!-- Add more testimonial cards as needed -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+            <p>Phone: +91 1234567890</p>
+            <p>Email: info@adoptapet.com</p>
+            <p>Address: 123 Pet Street, Pawsome City, 12345</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Pet Adoption. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

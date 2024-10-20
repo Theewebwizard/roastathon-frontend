@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPals Rehoming Platform</title>
+    <style>
+        :root {
+            --light-blue: #F4F6FF;
+            --yellow: #F3C623;
+            --orange: #EB8317;
+            --dark-blue: #10375C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+            background-color: var(--light-blue);
+        }
+
+        header {
+            background-color: var(--dark-blue);
+            color: var(--light-blue);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--yellow),
+                var(--yellow) 10px,
+                var(--orange) 10px,
+                var(--orange) 20px
+            );
+            opacity: 0.1;
+            animation: move-background 20s linear infinite;
+        }
+
+        @keyframes move-background {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        header h1 {
+            color: var(--light-blue);
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        nav {
+            background-color: var(--orange);
+            padding: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0.5rem;
+        }
+
+        nav ul li a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--dark-blue);
+            color: var(--light-blue);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h1, h2 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--yellow);
+            padding-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: var(--orange);
+            font-weight: bold;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        ul li::before {
+            content: "🐾";
+            margin-right: 10px;
+            color: var(--orange);
+        }
+
+        .creator-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .creator-card {
+            width: 220px;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .creator-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background-color: var(--light-blue);
+        }
+
+        .card-back {
+            background-color: var(--yellow);
+            color: var(--dark-blue);
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+
+        .creator-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid var(--orange);
+        }
+        footer {
+    background-color: #E85A2D;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.25rem 0;
+            }
+
+            .creator-card {
+                width: 80%;
+                max-width: 300px;
+                height: 280px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .creator-card {
+                height: 240px;
+            }
+
+            .creator-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PetPals Rehoming Platform</h1>
+    </header>
+
+    <!-- <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#creators">Creators</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav> -->
+
+    <main>
+        <section id="home">
+            <h2>Welcome to PetPals Rehoming Platform</h2>
+            <p>We are dedicated to preventing pet abandonment and providing a safe, loving home for every animal. Our platform connects pet owners who can no longer care for their pets with loving families looking to adopt.</p>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>At PetPals, we believe that every pet deserves a forever home. Our mission is to:</p>
+            <ul>
+                <li>Prevent pet abandonment by offering a responsible rehoming alternative</li>
+                <li>Connect pets with loving new families</li>
+                <li>Educate the community about responsible pet ownership</li>
+                <li>Provide support and resources for pet owners and adopters</li>
+            </ul>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Pet registration for owners considering rehoming</li>
+                <li>Adoption listings for those looking to welcome a new pet</li>
+                <li>Screening process to ensure safe and suitable homes</li>
+                <li>Support and advice for new pet owners</li>
+                <li>Educational resources on pet care and responsible ownership</li>
+            </ul>
+        </section>
+
+        <section id="creators">
+            <h2>Meet Our Creators</h2>
+            <p>We are freshmen at The LNM Institute of Information Technology, Jaipur, passionate about technology and animal welfare.</p>
+            <div class="creator-cards">
+                <div class="creator-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="/About Us/ARNAV.jpg" alt="Arnav Goel" class="creator-img">
+                            <h3>Arnav Goel</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Arnav Goel</h3>
+                            <p>Age: 18</p>
+                            <p>AI ML enthusiast and Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="creator-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="/About Us/sarthak.jpg" alt="Sarthak Joshi" class="creator-img">
+                            <h3>Sarthak Joshi</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Sarthak Joshi</h3>
+                            <p>Age: 19</p>
+                            <p>Web Developer, Graphic Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="creator-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="/About Us/som.jpg" alt="Agneeva Guha" class="creator-img">
+                            <h3>Agneeva Guha</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Agneeva Guha</h3>
+                            <p>Age: 19</p>
+                            <p>ESports enthusiast, Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="creator-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="/About Us/tiwari.jpg" alt="Aditya Tiwari" class="creator-img">
+                            <h3>Aditya Tiwari</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Aditya Tiwari</h3>
+                            <p>Age: 19</p>
+                            <p>Data Science and MERN stack Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>If you're considering rehoming your pet or looking to adopt, please get in touch:</p>
+            <p>Email: <span class="highlight">info@petpals-rehoming.org</span></p>
+            <p>Phone: <span class="highlight">+91 87648 65422</span></p>
+            <p>Address: LNMIIT Campus, Rupa ki Nangal, Post-Sumel, Via-Jamdoli, Jaipur-302031, Rajasthan</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetPals Rehoming Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

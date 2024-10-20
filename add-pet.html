@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Add Pet for Adoption</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="overflow-hidden">
+        <div class="logo lg:px-[33rem]">
+            <h1 class="text-center ">Adopt a Pet</h1>
+        </div>
+        
+    </header>
+
+    <main>
+        <section id="add-pet">
+            <h2 class="text-center">Add a Pet for Adoption</h2>
+            <form id="add-pet-form">
+                <label for="pet-name">Pet Name:</label>
+                <input type="text" id="pet-name" name="name" required>
+
+                <label for="pet-type">Pet Type:</label>
+                <select id="pet-type" name="type" required>
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="pet-breed">Breed:</label>
+                <input type="text" id="pet-breed" name="breed" required>
+
+                <label for="pet-age">Age:</label>
+                <input type="text" id="pet-age" name="age" required>
+
+                <label for="pet-info">Additional Information:</label>
+                <textarea id="pet-info" name="info" required></textarea>
+
+                <label for="pet-image">Pet Image URL:</label>
+                <input type="url" id="pet-image" name="image" required>
+
+                <label for="delete-password">Password for Deletion:</label>
+                <input type="password" id="delete-password" name="password" required>
+
+                <button type="submit">Add Pet</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Pet Adoption. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="add-pet.js"></script>
+</body>
+</html>
